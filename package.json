@@ -1,7 +1,7 @@
 {
   "name": "generic-memoizer",
   "description": "A flexible library for function memoization",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": false,
   "author": {
     "name": "Thiago O Santos <tos.oliveira@gmail.com>"
@@ -56,10 +56,10 @@
     "setupFilesAfterEnv": [
       "./test/jest-setup.ts"
     ],
-		"moduleNameMapper": {
-			"^src/(.*)": "<rootDir>/src/$1",
-			"^test/(.*)": "<rootDir>/test/$1"
-		}
+    "moduleNameMapper": {
+      "^src/(.*)": "<rootDir>/src/$1",
+      "^test/(.*)": "<rootDir>/test/$1"
+    }
   },
   "directories": {
     "test": "test"
