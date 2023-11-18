@@ -1,4 +1,14 @@
-export type Memoization = Record<string, unknown>;
+import { NO_MEMOIZATION } from './utils';
+
+export type MemoizationKey = string | number | symbol;
+export interface MemoizationItem {
+	memoized: unknown | typeof NO_MEMOIZATION;
+	children?: Memoization;
+}
+
+export type Memoization = {
+	[key in MemoizationKey]: MemoizationItem;
+};
 
 export interface StoreGetter {
 	/**

@@ -1,4 +1,5 @@
-import { GenericMemoizerOptions, StoreGetter } from './types';
+import { NO_MEMOIZATION, getMemoizedValue, setMemoizedValue } from './utils';
+import { GenericMemoizerOptions, MemoizationKey, StoreGetter } from './types';
 
 const defaultOptions: Required<GenericMemoizerOptions> = {
 	ignoreNotReadyStore: false,
@@ -30,7 +31,7 @@ export class GenericMemoizer {
 	 * @param callback The callback to be executed if there is nothing memoized
 	 * @returns The callback result (or a previous, memoized callback result)
 	 */
-	get<T>(key: string, callback: () => T): T {
+	get<T>(key: MemoizationKey | MemoizationKey[], callback: () => T): T {
 		const store = this.storeGetter.getStore();
 		if (!store) {
 			if (this.options.ignoreNotReadyStore) {
@@ -38,15 +39,16 @@ export class GenericMemoizer {
 			}
 			throw new Error('Memoizer store is not ready!');
 		}
-		if (key in store) return store[key] as T;
+		const memoized = getMemoizedValue<T>(store, key);
+		if (memoized !== NO_MEMOIZATION) return memoized;
 		const realResult = callback();
-		store[key] = realResult;
+		setMemoizedValue(store, key, realResult);
 		return realResult;
 	}
 
 	wrap<TArgs extends unknown[], T>(
 		callback: (...args: TArgs) => T,
-		getKey: (...args: TArgs) => string,
+		getKey: (...args: TArgs) => MemoizationKey | MemoizationKey[],
 	) {
 		return (...args: TArgs) => {
 			const key = getKey(...args);
@@ -58,7 +60,9 @@ export class GenericMemoizer {
 		obj: TObj,
 		methodName: TMethod,
 		getKey: TObj[TMethod] extends Func
-			? (...args: Parameters<TObj[TMethod]>) => string
+			? (
+					...args: Parameters<TObj[TMethod]>
+			  ) => MemoizationKey | MemoizationKey[]
 			: never,
 	) {
 		const method = obj[methodName];

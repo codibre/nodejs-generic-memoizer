@@ -33,6 +33,22 @@ describe(GenericMemoizer.name, () => {
 			expect(awaitedResult).toBe(await result2);
 		});
 
+		it('should support key list as a memoization key', () => {
+			const callback: () => { a: string } = jest
+				.fn()
+				.mockImplementation(() => ({ a: 'b' }));
+			const recordStoreGetter = new RecordStoreGetter();
+			const target = new GenericMemoizer(recordStoreGetter);
+
+			const result1 = target.get(['my key', 1, Symbol.for('test')], callback);
+			const result2 = target.get(['my key', 1, Symbol.for('test')], callback);
+
+			expect(result1).toEqual({ a: 'b' });
+			expect(result1).toBe(result2);
+		});
+	});
+
+	describe(proto.wrap.name, () => {
 		it('should wrap function memoizing it', async () => {
 			const callback: (k: string) => Promise<{ a: string }> = jest
 				.fn()
@@ -49,6 +65,24 @@ describe(GenericMemoizer.name, () => {
 			expect(awaitedResult).toBe(await result2);
 		});
 
+		it('should wrap function memoizing it when using key list', async () => {
+			const callback: (k: string) => Promise<{ a: string }> = jest
+				.fn()
+				.mockImplementation(async () => ({ a: 'b' }));
+			const recordStoreGetter = new RecordStoreGetter();
+			const target = new GenericMemoizer(recordStoreGetter);
+
+			const wrapped = target.wrap(callback, (a) => [a, 1, Symbol.for('test')]);
+			const result1 = wrapped('my key');
+			const result2 = wrapped('my key');
+
+			expect(result1).toBe(result2);
+			const awaitedResult = await result1;
+			expect(awaitedResult).toBe(await result2);
+		});
+	});
+
+	describe(proto.replace.name, () => {
 		it('should replace method memoizing it', async () => {
 			const obj = {
 				method(_p: string) {
