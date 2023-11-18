@@ -1,7 +1,7 @@
 {
   "name": "generic-memoizer",
   "description": "Boost your JavaScript application's performance with this versatile and efficient memoization library",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "author": {
     "name": "Thiago O Santos <tos.oliveira@gmail.com>"
@@ -72,7 +72,15 @@
   "bugs": {
     "url": "https://github.com/codibre/nodejs-generic-memoizer/issues"
   },
-  "keywords": ["memoization", "caching", "optimization", "performance", "concurrency", "elastic-apm", "efficiency"],
+  "keywords": [
+    "memoization",
+    "caching",
+    "optimization",
+    "performance",
+    "concurrency",
+    "elastic-apm",
+    "efficiency"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@codibre/confs": "^1.1.2",

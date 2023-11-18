@@ -1,3 +1,10 @@
+## [0.1.2](https://github.com/codibre/nodejs-generic-memoizer/compare/v0.1.1...v0.1.2) (2023-11-18)
+
+
+### Bug Fixes
+
+* creating keywords, and improving readme and description ([454ca1d](https://github.com/codibre/nodejs-generic-memoizer/commit/454ca1d2f5b58d8554c5210af1215a0f247de423))
+
 ## [0.1.1](https://github.com/codibre/nodejs-generic-memoizer/compare/v0.1.0...v0.1.1) (2023-11-17)
 
 
