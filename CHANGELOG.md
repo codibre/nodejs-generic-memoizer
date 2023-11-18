@@ -1,3 +1,10 @@
+# [0.2.0](https://github.com/codibre/nodejs-generic-memoizer/compare/v0.1.3...v0.2.0) (2023-11-18)
+
+
+### Features
+
+* supporting key list to avoid string concatenation on memoization ([bcc3576](https://github.com/codibre/nodejs-generic-memoizer/commit/bcc357610e78a1987b02328bc2862e63ce7b55c3))
+
 ## [0.1.3](https://github.com/codibre/nodejs-generic-memoizer/compare/v0.1.2...v0.1.3) (2023-11-18)
 
 
