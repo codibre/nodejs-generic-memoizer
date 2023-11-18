@@ -46,6 +46,12 @@ export class GenericMemoizer {
 		return realResult;
 	}
 
+	/**
+	 * Returns a memoized version of the given callback
+	 * @param callback The callback to be memoized
+	 * @param getKey The function to define the memoization key
+	 * @returns A memoized callback
+	 */
 	wrap<TArgs extends unknown[], T>(
 		callback: (...args: TArgs) => T,
 		getKey: (...args: TArgs) => MemoizationKey | MemoizationKey[],
@@ -56,6 +62,12 @@ export class GenericMemoizer {
 		};
 	}
 
+	/**
+	 * Replaces a method by a memoized version of it
+	 * @param obj The object where the method is
+	 * @param methodName The name of the method to be memoized
+	 * @param getKey The function to define the memoization key
+	 */
 	replace<TObj extends object, TMethod extends Methods<TObj>>(
 		obj: TObj,
 		methodName: TMethod,
