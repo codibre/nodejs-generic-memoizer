@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/codibre/nodejs-generic-memoizer/compare/v0.2.0...v0.2.1) (2023-11-18)
+
+
+### Bug Fixes
+
+* completing documentation ([7686f70](https://github.com/codibre/nodejs-generic-memoizer/commit/7686f707eaacf05bc2a9ecfedc9ecdb97ef8ca8c))
+
 # [0.2.0](https://github.com/codibre/nodejs-generic-memoizer/compare/v0.1.3...v0.2.0) (2023-11-18)
 
 
