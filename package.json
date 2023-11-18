@@ -1,7 +1,7 @@
 {
   "name": "generic-memoizer",
   "description": "Boost your JavaScript application's performance with this versatile and efficient memoization library",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "author": {
     "name": "Thiago O Santos <tos.oliveira@gmail.com>"
