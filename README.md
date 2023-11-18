@@ -16,6 +16,26 @@ Seamlessly integrate it with your project using dependency injection and choose 
 npm i generic-memoizer
 ```
 
+## Memoization: Optimizing Function Performance
+
+### What is Memoization?
+
+Memoization is a powerful optimization technique used in computer science and programming to enhance the performance of functions by caching their results. The core idea is to store the output of expensive function calls and return the cached result when the same inputs occur again. This eliminates redundant calculations, reducing computation time and resource usage.
+
+### How Does it Work?
+
+When a function is memoized, its input parameters serve as keys to a cache, and the corresponding output is stored. Subsequent calls with the same inputs retrieve the cached result instead of recalculating, resulting in faster and more efficient execution.
+
+### Key Benefits:
+
+Improved Performance: Reduces redundant calculations, leading to faster function execution.
+Resource Efficiency: Minimizes the use of computational resources by storing and reusing calculated results.
+Optimal for Recurring Computations: Particularly beneficial for functions with repetitive or recursive patterns.
+
+## Using "generic-memoizer":
+
+Our library, **generic-memoizer**, empowers you to easily implement memoization in your JavaScript applications. With support for various memoization strategies, integration with popular frameworks, and flexibility in context management, it provides a comprehensive solution to boost the efficiency of your functions
+
 ## How to use it
 
 generic-memoizer is meant to be used with dependency injection, but you can do whatever you feel is fitting. The first way is the most recommended one, using an AsyncLocalStoreGetter. This one uses async-hooks to create a context that will have access to the object in a safe scope, no matter how many concurrent requests you have in your API, for example. To do it, first inject a singleton instance of your store:
